@@ -1,11 +1,11 @@
-export default async function (context, req) {
+module.exports = async function (context, req) {
   context.log("Ping endpoint hit");
 
-  return {
+  context.res = {
     status: 200,
-    jsonBody: {
+    body: {
       message: "pong",
       time: new Date().toISOString()
     }
   };
-}
+};
