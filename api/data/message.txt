@@ -1,0 +1,2 @@
+This message came from the server file system.
+Frontend cannot read this directly.
