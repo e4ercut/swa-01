@@ -31,6 +31,33 @@ function App() {
   }
 };
 
+const [name, setName] = React.useState("");
+const [message, setMessage] = React.useState("");
+const submitForm = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("/api/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, message })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Submitted!");
+      setName("");
+      setMessage("");
+    } else {
+      alert("Error submitting");
+    }
+  } catch {
+    alert("Submission failed");
+  }
+};
 
   return (
     <div style={{ padding: "2rem" }}>
@@ -47,7 +74,26 @@ function App() {
       <button onClick={readServerFile}>
         Read Server File
       </button>
+      <br /><br />
+      <form onSubmit={submitForm}>
+  <div>
+    <input
+      placeholder="Name"
+      value={name}
+      onChange={e => setName(e.target.value)}
+    />
+  </div>
 
+  <div>
+    <textarea
+      placeholder="Message"
+      value={message}
+      onChange={e => setMessage(e.target.value)}
+    />
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
 
     </div>
   );
