@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+
+    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "swa-writer@swa-sheets-api.iam.gserviceaccount.com"
+  }
+}

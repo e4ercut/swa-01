@@ -59,6 +59,27 @@ const submitForm = async (e) => {
   }
 };
 
+
+
+  const submit = async () => {
+    const res = await fetch("/api/addRow", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: "EZ",
+        email: "ez@test.com"
+      })
+    });
+
+    const data = await res.json();
+    console.log(data);
+  };
+
+
+
+
   return (
     <div style={{ padding: "2rem" }}>
       <h1>SWA API Test</h1>
@@ -95,7 +116,18 @@ const submitForm = async (e) => {
   <button type="submit">Submit</button>
 </form>
 
+<div>
+      <h1>Google Sheet Test</h1>
+      <button onClick={submit}>
+        Write to Sheet
+      </button>
     </div>
+
+
+    </div>
+
+
+
   );
 }
 
